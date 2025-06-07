@@ -1,5 +1,7 @@
 # 🌾 Crop Recommendation System
 
+**🚀 [🌐 Live Demo](https://mohanraj9342-crop-recommendation-streamlit-app-xcst6l.streamlit.app/)**
+
 A machine learning-powered web application that recommends the most suitable crop to grow based on soil and weather parameters. Built with Python, scikit-learn, and Streamlit.
 
 ---
