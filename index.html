@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌾 Crop Recommendation System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-seedling"></i> Crop Recommendation System</h1>
+                <p>AI-Powered Smart Agriculture Solution</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Info Section -->
+            <section class="info-section">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <i class="fas fa-brain"></i>
+                        <h3>AI-Powered</h3>
+                        <p>Advanced Random Forest algorithm with 99.55% accuracy</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-leaf"></i>
+                        <h3>22 Crops</h3>
+                        <p>Supports recommendation for 22 different crop types</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Data-Driven</h3>
+                        <p>Based on soil nutrients and climate parameters</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Input Form -->
+            <section class="form-section">
+                <div class="form-container">
+                    <h2><i class="fas fa-flask"></i> Enter Soil & Climate Parameters</h2>
+                    
+                    <form id="cropForm" class="crop-form">
+                        <div class="form-grid">
+                            <!-- Soil Nutrients -->
+                            <div class="form-group">
+                                <label for="nitrogen">
+                                    <i class="fas fa-atom"></i> Nitrogen (N)
+                                    <span class="range">(0-140)</span>
+                                </label>
+                                <input type="number" id="nitrogen" name="nitrogen" min="0" max="140" value="50" required>
+                                <div class="input-slider">
+                                    <input type="range" id="nitrogenSlider" min="0" max="140" value="50" class="slider">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phosphorus">
+                                    <i class="fas fa-atom"></i> Phosphorus (P)
+                                    <span class="range">(5-145)</span>
+                                </label>
+                                <input type="number" id="phosphorus" name="phosphorus" min="5" max="145" value="50" required>
+                                <div class="input-slider">
+                                    <input type="range" id="phosphorusSlider" min="5" max="145" value="50" class="slider">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="potassium">
+                                    <i class="fas fa-atom"></i> Potassium (K)
+                                    <span class="range">(5-205)</span>
+                                </label>
+                                <input type="number" id="potassium" name="potassium" min="5" max="205" value="50" required>
+                                <div class="input-slider">
+                                    <input type="range" id="potassiumSlider" min="5" max="205" value="50" class="slider">
+                                </div>
+                            </div>
+
+                            <!-- Climate Parameters -->
+                            <div class="form-group">
+                                <label for="temperature">
+                                    <i class="fas fa-thermometer-half"></i> Temperature (°C)
+                                    <span class="range">(10-45)</span>
+                                </label>
+                                <input type="number" id="temperature" name="temperature" min="10" max="45" step="0.1" value="25" required>
+                                <div class="input-slider">
+                                    <input type="range" id="temperatureSlider" min="10" max="45" step="0.1" value="25" class="slider">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="humidity">
+                                    <i class="fas fa-tint"></i> Humidity (%)
+                                    <span class="range">(10-100)</span>
+                                </label>
+                                <input type="number" id="humidity" name="humidity" min="10" max="100" step="0.1" value="50" required>
+                                <div class="input-slider">
+                                    <input type="range" id="humiditySlider" min="10" max="100" step="0.1" value="50" class="slider">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ph">
+                                    <i class="fas fa-flask"></i> pH Level
+                                    <span class="range">(3.5-9.5)</span>
+                                </label>
+                                <input type="number" id="ph" name="ph" min="3.5" max="9.5" step="0.1" value="6.5" required>
+                                <div class="input-slider">
+                                    <input type="range" id="phSlider" min="3.5" max="9.5" step="0.1" value="6.5" class="slider">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="rainfall">
+                                    <i class="fas fa-cloud-rain"></i> Rainfall (mm)
+                                    <span class="range">(20-300)</span>
+                                </label>
+                                <input type="number" id="rainfall" name="rainfall" min="20" max="300" step="0.1" value="100" required>
+                                <div class="input-slider">
+                                    <input type="range" id="rainfallSlider" min="20" max="300" step="0.1" value="100" class="slider">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="predict-btn">
+                            <i class="fas fa-magic"></i> Get Crop Recommendation
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-container">
+                    <h2><i class="fas fa-seedling"></i> Recommendation Result</h2>
+                    <div class="result-card" id="resultCard">
+                        <div class="crop-icon" id="cropIcon">🌾</div>
+                        <h3 id="cropName">Recommended Crop</h3>
+                        <p id="cropDescription">Based on your soil and climate conditions</p>
+                        <div class="confidence" id="confidence">Confidence: High</div>
+                    </div>
+                    
+                    <div class="input-summary" id="inputSummary">
+                        <!-- Input summary will be populated here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Demo Mode Notice -->
+            <section class="demo-notice">
+                <div class="notice-content">
+                    <i class="fas fa-info-circle"></i>
+                    <h3>Demo Mode</h3>
+                    <p>This is a demonstration of the crop recommendation system. In demo mode, predictions are simulated based on feature importance patterns from the trained Random Forest model. For production deployment with the actual ML model, a backend API server would be required.</p>
+                    
+                    <div class="model-stats">
+                        <h4>🤖 Model Performance:</h4>
+                        <ul>
+                            <li><strong>Algorithm:</strong> Random Forest Classifier</li>
+                            <li><strong>Accuracy:</strong> 99.55%</li>
+                            <li><strong>Cross-Validation Score:</strong> 99.32%</li>
+                            <li><strong>Supported Crops:</strong> 22 different types</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 Crop Recommendation System | Powered by AI & Machine Learning</p>
+                <div class="footer-links">
+                    <a href="https://github.com/mohanraj9342/Crop_recommendation" target="_blank">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

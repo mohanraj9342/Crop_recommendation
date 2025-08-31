@@ -1,4 +1,8 @@
 pandas
 scikit-learn
 joblib
-streamlit
+matplotlib
+seaborn
+jupyter
+flask
+flask-cors
